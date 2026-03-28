@@ -48,7 +48,7 @@ portfolio/
 ## 🌐 Live Website
 Once GitHub Pages is enabled, the portfolio will be live at:
 
-👉 https://chandrakantshah.github.io/portfolio/
+👉 https://chandrakantshah.github.io/ChandraKantShah/
 
 ---
 
