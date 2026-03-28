@@ -1,4 +1,4 @@
-# Chandra Kant Shah – Modern Portfolio Website
+# Chandra Kant Shah – DEMO Portfolio Website
 
 This repository contains the source code for my **personal portfolio website**, built using HTML, CSS, and JavaScript, hosted using **GitHub Pages**.
 
