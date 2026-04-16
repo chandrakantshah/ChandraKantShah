@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <portfolio>
   <personal>
-    <name>Chandrakant Shah</name>
+    <name>Chandra kant Shah</name>
+    <tagline>Electrical &amp; Electronics Engineering Student at Kathmandu University. Dedicated to pushing the boundaries of robotics and automation.</tagline>
     <role>Vice President, Robo Yuwa</role>
     <location>Kathmandu, Nepal</location>
-    <tagline>Electrical &amp; Electronics Engineering Student at Kathmandu University. Dedicated to pushing the boundaries of robotics and automation.</tagline>
     <photo>your-photo.jpeg</photo>
   </personal>
 
@@ -13,29 +13,37 @@
       <title>3lbs Robo War Runner Up</title>
       <organizer>Aavishakar</organizer>
       <image>robowar.jpg</image>
+      <image>robowar1.jpg</image>
+      <image>robowar2.jpg</image>
     </win>
     <win>
       <title>2nd Runner Up - IT Meet 2025</title>
-      <organizer>Kathmandu University</organizer>
+      <organizer>Kathmandu University Robotics Club</organizer>
       <image>it-meet.jpg</image>
+      <image>it-meet1.jpg</image>
+      <image>it-meet2.jpg</image>
     </win>
   </achievements>
 
   <experience>
     <event>
-      <name>RADAR '26</name>
-      <role>Lead Organizer</role>
+      <name>RADAR26</name>
+      <tagline>24hrs Hardware Hackathon</tagline>
+      <role>Organizer</role>
       <desc>Successfully organized the flagship annual event of Robo Yuwa, managing logistics, technical tracks, and participant engagement.</desc>
     </event>
     <participation>
-      <item>Orbit 2.0 Participant</item>
-      <item>Aarambha Participant</item>
-    </participation>
+      <item>Orbit2.0 Participant</item>
+      <item>Aarambha24 Participant</item>
+      <item>EEPEX25 Participant</item>
+              </participation>
   </experience>
 
   <social>
+   <github>https://github.com/chandrakantshah</github>
     <linkedin>https://www.linkedin.com/in/chandra-kant-shah</linkedin>
-    <github>https://github.com/chandrakantshah</github>
-    <email>Chandrakants298@gmail.com</email>
+    <facebook>https://www.facebook.com/chandrakant.shah.001</facebook>
+    <instagram>https://www.instagram.com/chandrakant.shah.001/</instagram>
+    <twitter>https://x.com/Cshah001</twitter>
   </social>
 </portfolio>
