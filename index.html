@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
+    html {
+  scroll-behavior: smooth;
+}
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont;
@@ -16,18 +19,20 @@
       padding: 20px;
     }
 
-    .card {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: 0.4s;
-    }
+  body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont;
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #020617);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  color: white;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 
     img {
       width: 100px;
@@ -78,7 +83,19 @@
 </div>
 
 <script>
+  document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    card.style.transform = "translateY(-8px) scale(1.02)";
+  });
+});
 fetch("portfolio.xml")
+.then(res => {
+  if (!res.ok) {
+    throw new Error("XML not found");
+  }
+  return res.text();
+})
+.then(data => {
 .then(res => res.text())
 .then(data => {
   const parser = new DOMParser();
