@@ -88,71 +88,74 @@
     card.style.transform = "translateY(-8px) scale(1.02)";
   });
 });
-fetch("portfolio.xml")
-.then(res => {
-  if (!res.ok) {
-    throw new Error("XML not found");
-  }
-  return res.text();
-})
-.then(data => {
-.then(res => res.text())
-.then(data => {
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(data, "text/xml");
 
-  // PERSONAL
-  const name = xml.querySelector("name").textContent;
-  const title = xml.querySelector("title").textContent;
-  const photo = xml.querySelector("photo").textContent;
+fetch("./portfolio.xml")
+  .then(res => {
+    if (!res.ok) {
+      throw new Error("XML not loading");
+    }
+    return res.text();
+  })
+  .then(data => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data, "text/xml");
 
-  document.getElementById("hero").innerHTML = `
-    <img src="${photo}">
-    <h1>${name}</h1>
-    <p>${title}</p>
-  `;
+    console.log("XML Loaded ✅");
 
-  // ABOUT
-  document.getElementById("about").innerHTML = `
-    <h2>About</h2>
-    <p>${xml.querySelector("about").textContent}</p>
-  `;
+    // PERSONAL
+    const name = xml.querySelector("name")?.textContent || "Name missing";
+    const title = xml.querySelector("title")?.textContent || "Title missing";
+    const photo = xml.querySelector("photo")?.textContent || "your-photo.jpeg";
 
-  // SKILLS
-  let skills = xml.querySelectorAll("skill");
-  let skillHTML = "<h2>Skills</h2><div class='grid'>";
-  skills.forEach(s => {
-    skillHTML += `<div class="card">${s.textContent}</div>`;
-  });
-  skillHTML += "</div>";
-  document.getElementById("skills").innerHTML = skillHTML;
-
-  // PROJECTS
-  let projects = xml.querySelectorAll("project");
-  let projHTML = "<h2>Projects</h2>";
-  projects.forEach(p => {
-    projHTML += `
-      <div class="card">
-        <h3>${p.querySelector("name").textContent}</h3>
-        <p>${p.querySelector("desc").textContent}</p>
-      </div>
+    document.getElementById("hero").innerHTML = `
+      <img src="${photo}">
+      <h1>${name}</h1>
+      <p>${title}</p>
     `;
+
+    // ABOUT
+    document.getElementById("about").innerHTML = `
+      <h2>About</h2>
+      <p>${xml.querySelector("about")?.textContent || ""}</p>
+    `;
+
+    // SKILLS
+    let skills = xml.querySelectorAll("skill");
+    let skillHTML = "<h2>Skills</h2><div class='grid'>";
+    skills.forEach(s => {
+      skillHTML += `<div class="card">${s.textContent}</div>`;
+    });
+    skillHTML += "</div>";
+    document.getElementById("skills").innerHTML = skillHTML;
+
+    // PROJECTS
+    let projects = xml.querySelectorAll("project");
+    let projHTML = "<h2>Projects</h2>";
+    projects.forEach(p => {
+      projHTML += `
+        <div class="card">
+          <h3>${p.querySelector("name")?.textContent}</h3>
+          <p>${p.querySelector("desc")?.textContent}</p>
+        </div>
+      `;
+    });
+    document.getElementById("projects").innerHTML = projHTML;
+
+    // SOCIAL
+    const social = xml.querySelector("social");
+    document.getElementById("contact").innerHTML = `
+      <h2>Contact</h2>
+      <a class="btn" href="${social.querySelector("github").textContent}">GitHub</a>
+      <a class="btn" href="${social.querySelector("linkedin").textContent}">LinkedIn</a>
+      <a class="btn" href="${social.querySelector("facebook").textContent}">Facebook</a>
+      <a class="btn" href="${social.querySelector("instagram").textContent}">Instagram</a>
+      <a class="btn" href="${social.querySelector("twitter").textContent}">X</a>
+    `;
+  })
+  .catch(err => {
+    console.error("ERROR:", err);
+    document.body.innerHTML = "<h1 style='color:red;text-align:center;'>XML NOT LOADING ❌</h1>";
   });
-  document.getElementById("projects").innerHTML = projHTML;
-
-  // SOCIAL
-  const social = xml.querySelector("social");
-  document.getElementById("contact").innerHTML = `
-    <h2>Contact</h2>
-    <a class="btn" href="${social.querySelector("github").textContent}">GitHub</a>
-    <a class="btn" href="${social.querySelector("linkedin").textContent}">LinkedIn</a>
-    <a class="btn" href="${social.querySelector("facebook").textContent}">Facebook</a>
-    <a class="btn" href="${social.querySelector("instagram").textContent}">Instagram</a>
-    <a class="btn" href="${social.querySelector("twitter").textContent}">X</a>
-  `;
-
-});
-
 // Scroll animation
 const reveal = () => {
   document.querySelectorAll(".fade").forEach(el => {
