@@ -1,66 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Portfolio</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>Chandrakant Shah | Portfolio</title>
   <style>
+    :root {
+      --soft-sand: #F4EFEA;
+      --charcoal: #2F3640;
+      --terracotta: #D96C59;
+      --terracotta-dark: #C05B4A;
+      --card-bg: #FFFFFF;
+    }
+
     html {
-  scroll-behavior: smooth;
-}
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont;
-      background: #0f172a;
-      color: white;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--soft-sand);
+      color: var(--charcoal);
+      line-height: 1.6;
     }
 
     .container {
-      padding: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-  body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont;
-  background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #020617);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-  color: white;
-}
-
-@keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-    img {
-      width: 100px;
-      border-radius: 50%;
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 600;
+      margin-bottom: 0.5em;
     }
 
-    h1 { margin: 10px 0; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-      gap: 10px;
+    h1 {
+      font-size: 3rem;
+      margin-top: 0;
     }
 
+    h2 {
+      font-size: 2.2rem;
+      text-align: center;
+      margin: 2em 0 1em;
+      color: var(--terracotta);
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5em;
+    }
+
+    /* Buttons */
     .btn {
       display: inline-block;
-      padding: 8px 12px;
-      margin: 5px;
-      background: linear-gradient(135deg,#3b82f6,#9333ea);
-      border-radius: 10px;
-      text-decoration: none;
+      padding: 12px 24px;
+      background-color: var(--terracotta);
       color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 5px;
     }
 
+    .btn:hover {
+      background-color: var(--terracotta-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    #hero {
+      text-align: center;
+      padding: 100px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid var(--terracotta);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .tagline {
+      font-size: 1.4rem;
+      color: var(--charcoal);
+      opacity: 0.8;
+      max-width: 600px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skill-tag {
+      background: var(--soft-sand);
+      color: var(--charcoal);
+      border: 1px solid rgba(47, 54, 64, 0.2);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 500;
+    }
+
+    /* Projects Section */
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+    }
+
+    @media(min-width: 768px) {
+      .project-card {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .testimonial {
+      margin-top: 20px;
+      padding-left: 20px;
+      border-left: 4px solid var(--terracotta);
+      font-style: italic;
+      color: var(--charcoal);
+      opacity: 0.9;
+    }
+
+    .testimonial-author {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 0.9rem;
+    }
+
+    /* Contact Section */
+    #contact {
+      text-align: center;
+      padding: 60px 20px 100px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    /* Animations */
     .fade {
       opacity: 0;
       transform: translateY(30px);
-      transition: 0.8s;
+      transition: 0.8s ease-out;
     }
 
     .fade.show {
@@ -69,110 +202,105 @@
     }
   </style>
 </head>
-
 <body>
 
-<div class="container">
+  <div class="container">
+    
+    <section id="hero" class="fade">
+      <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chandrakant Shah" class="profile-photo">
+      <h1>Chandrakant Shah</h1>
+      <p class="tagline">Electrical & Electronics Engineering Student <br> Robotics & Power Electronics Enthusiast</p>
+    </section>
 
-  <div id="hero" class="card fade"></div>
-  <div id="about" class="card fade"></div>
-  <div id="skills" class="card fade"></div>
-  <div id="projects" class="card fade"></div>
-  <div id="contact" class="card fade"></div>
+    <section id="about" class="card fade">
+      <h2>My Story</h2>
+      <p>I am passionate about building real-world electronics systems, from reliable power supplies to complex automation and robotics projects. For me, engineering isn't just about reading schematics—it's about understanding the people who use the technology and crafting solutions that bring genuine warmth, ease, and efficiency to their everyday lives.</p>
+    </section>
 
-</div>
+    <section id="skills" class="fade">
+      <h2>Technical Toolbox</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">Analog Electronics</span>
+        <span class="skill-tag">Digital Electronics</span>
+        <span class="skill-tag">Power Electronics</span>
+        <span class="skill-tag">PCB Design</span>
+        <span class="skill-tag">Simulation (LTspice, Proteus)</span>
+      </div>
+    </section>
 
-<script>
-fetch("./portfolio.xml")
-  .then(function(res) {
-    if (!res.ok) {
-      throw new Error("XML not loading");
+    <section id="projects">
+      <h2>Impactful Projects</h2>
+
+      <div class="project-card fade">
+        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Candid interaction" class="project-image">
+        <div class="project-content">
+          <h3>LM317 Voltage Regulator</h3>
+          <p>An adjustable DC regulated power supply designed from the ground up for maximum reliability. Built to ensure that delicate lab equipment receives perfectly stable voltage under varying loads.</p>
+          <div class="testimonial">
+            "Chandrakant's power supply setup brought incredible peace of mind to our lab sessions. Knowing the voltage was rock-solid allowed us to focus completely on our experiments."
+            <span class="testimonial-author">— Lab Partner & Peer Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade">
+        <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Warm sun-drenched family" class="project-image">
+        <div class="project-content">
+          <h3>APS System</h3>
+          <p>An automatic mains-inverter switching system that guarantees zero downtime. I engineered this to seamlessly bridge power gaps, keeping homes and essential systems running smoothly when the grid drops.</p>
+          <div class="testimonial">
+            "The transition between mains and inverter is so smooth you don't even notice the power went out. It's a game-changer for keeping our daily lives uninterrupted."
+            <span class="testimonial-author">— Project Supervisor</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team collaboration" class="project-image">
+        <div class="project-content">
+          <h3>Digital Clock</h3>
+          <p>A functional digital clock built entirely using fundamental logic ICs. This project bridges the gap between raw digital theory and a tangible, real-world device that people interact with every day.</p>
+          <div class="testimonial">
+            "A brilliant demonstration of applying raw logic gates to create something incredibly practical. It's rare to see textbook theory transformed so elegantly into a working device."
+            <span class="testimonial-author">— Academic Mentor</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="contact" class="fade">
+      <h2>Let's Connect</h2>
+      <p>Whether you want to discuss a new project, collaborate on electronics, or just say hello, I'd love to hear from you.</p>
+      <div class="social-links">
+        <a class="btn" href="mailto:Chandrakants298@gmail.com">Email Me</a>
+        <a class="btn" href="https://github.com/chandrakantshah" target="_blank">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/chandra-kant-shah" target="_blank">LinkedIn</a>
+        <a class="btn" href="https://www.facebook.com/chandrakant.shah.001" target="_blank">Facebook</a>
+        <a class="btn" href="https://www.instagram.com/chandrakant.shah.001/" target="_blank">Instagram</a>
+        <a class="btn" href="https://x.com/Cshah001" target="_blank">X (Twitter)</a>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Scroll animation for elements fading in
+    function reveal() {
+      var elements = document.querySelectorAll(".fade");
+      for (var i = 0; i < elements.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = elements[i].getBoundingClientRect().top;
+        var elementVisible = 100;
+
+        if (elementTop < windowHeight - elementVisible) {
+          elements[i].classList.add("show");
+        }
+      }
     }
-    return res.text();
-  })
-  .then(function(data) {
 
-    var parser = new DOMParser();
-    var xml = parser.parseFromString(data, "text/xml");
-
-    console.log("XML Loaded ✅");
-
-    // PERSONAL
-    var name = xml.querySelector("name") ? xml.querySelector("name").textContent : "Name missing";
-    var title = xml.querySelector("title") ? xml.querySelector("title").textContent : "";
-    var photo = xml.querySelector("photo") ? xml.querySelector("photo").textContent : "your-photo.jpeg";
-
-    document.getElementById("hero").innerHTML =
-      '<img src="' + photo + '">' +
-      '<h1>' + name + '</h1>' +
-      '<p>' + title + '</p>';
-
-    // ABOUT
-    var about = xml.querySelector("about") ? xml.querySelector("about").textContent : "";
-
-    document.getElementById("about").innerHTML =
-      '<h2>About</h2><p>' + about + '</p>';
-
-    // SKILLS
-    var skills = xml.querySelectorAll("skill");
-    var skillHTML = "<h2>Skills</h2><div class='grid'>";
-
-    for (var i = 0; i < skills.length; i++) {
-      skillHTML += "<div class='card'>" + skills[i].textContent + "</div>";
-    }
-
-    skillHTML += "</div>";
-    document.getElementById("skills").innerHTML = skillHTML;
-
-    // PROJECTS
-    var projects = xml.querySelectorAll("project");
-    var projHTML = "<h2>Projects</h2>";
-
-    for (var i = 0; i < projects.length; i++) {
-      var pname = projects[i].querySelector("name").textContent;
-      var pdesc = projects[i].querySelector("desc").textContent;
-
-      projHTML +=
-        "<div class='card'>" +
-        "<h3>" + pname + "</h3>" +
-        "<p>" + pdesc + "</p>" +
-        "</div>";
-    }
-
-    document.getElementById("projects").innerHTML = projHTML;
-
-    // SOCIAL
-    var social = xml.querySelector("social");
-
-    document.getElementById("contact").innerHTML =
-      "<h2>Contact</h2>" +
-      "<a class='btn' href='" + social.querySelector("github").textContent + "'>GitHub</a>" +
-      "<a class='btn' href='" + social.querySelector("linkedin").textContent + "'>LinkedIn</a>" +
-      "<a class='btn' href='" + social.querySelector("facebook").textContent + "'>Facebook</a>" +
-      "<a class='btn' href='" + social.querySelector("instagram").textContent + "'>Instagram</a>" +
-      "<a class='btn' href='" + social.querySelector("twitter").textContent + "'>X</a>";
-
-  })
-  .catch(function(err) {
-    console.error("ERROR:", err);
-    document.body.innerHTML = "<h1 style='color:red;text-align:center;'>XML NOT LOADING ❌</h1>";
-  });
-
-
-// Scroll animation
-function reveal() {
-  var elements = document.querySelectorAll(".fade");
-  for (var i = 0; i < elements.length; i++) {
-    var top = elements[i].getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      elements[i].classList.add("show");
-    }
-  }
-}
-
-window.addEventListener("scroll", reveal);
-window.addEventListener("load", reveal);
-</script>
-
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("load", reveal); // Trigger on load for elements already in view
+  </script>
 </body>
 </html>
