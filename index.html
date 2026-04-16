@@ -3,304 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chandrakant Shah | Portfolio</title>
+  <title>Portfolio | Chandrakant Shah</title>
   <style>
     :root {
       --soft-sand: #F4EFEA;
       --charcoal: #2F3640;
       --terracotta: #D96C59;
-      --terracotta-dark: #C05B4A;
       --card-bg: #FFFFFF;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--soft-sand);
-      color: var(--charcoal);
-      line-height: 1.6;
+      margin: 0; font-family: 'Segoe UI', sans-serif;
+      background-color: var(--soft-sand); color: var(--charcoal); line-height: 1.6;
     }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Typography */
-    h1, h2, h3 {
-      font-weight: 600;
-      margin-bottom: 0.5em;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-top: 0;
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      text-align: center;
-      margin: 2em 0 1em;
-      color: var(--terracotta);
-    }
-
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5em;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: var(--terracotta);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      margin: 5px;
-    }
-
-    .btn:hover {
-      background-color: var(--terracotta-dark);
-      transform: translateY(-2px);
-    }
-
-    /* Hero Section */
-    #hero {
-      text-align: center;
-      padding: 100px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-    }
-
-    .profile-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 4px solid var(--terracotta);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .tagline {
-      font-size: 1.4rem;
-      color: var(--charcoal);
-      opacity: 0.8;
-      max-width: 600px;
-    }
-
-    /* Cards */
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .skill-tag {
-      background: var(--soft-sand);
-      color: var(--charcoal);
-      border: 1px solid rgba(47, 54, 64, 0.2);
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: 500;
-    }
-
-    /* Projects Section */
-    .project-card {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-      background: var(--card-bg);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      margin-bottom: 40px;
-    }
-
-    @media(min-width: 768px) {
-      .project-card {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .project-image {
-      width: 100%;
-      height: 100%;
-      min-height: 300px;
-      object-fit: cover;
-    }
-
-    .project-content {
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .testimonial {
-      margin-top: 20px;
-      padding-left: 20px;
-      border-left: 4px solid var(--terracotta);
-      font-style: italic;
-      color: var(--charcoal);
-      opacity: 0.9;
-    }
-
-    .testimonial-author {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-      font-style: normal;
-      font-size: 0.9rem;
-    }
-
-    /* Contact Section */
-    #contact {
-      text-align: center;
-      padding: 60px 20px 100px;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    /* Animations */
-    .fade {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: 0.8s ease-out;
-    }
-
-    .fade.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    h2 { font-size: 2.2rem; text-align: center; margin: 2em 0 1em; color: var(--terracotta); }
+    
+    /* Layouts */
+    #hero { text-align: center; padding: 100px 20px; }
+    .about-card { background: var(--card-bg); border-radius: 12px; padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .about-image { width: 250px; height: 250px; border-radius: 16px; object-fit: cover; border: 4px solid var(--terracotta); }
+    
+    .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .skill-tag { background: white; border: 1px solid rgba(0,0,0,0.1); padding: 10px 20px; border-radius: 30px; }
+    
+    .project-card { display: grid; grid-template-columns: 1fr; background: white; border-radius: 16px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    @media(min-width: 768px) { .project-card { grid-template-columns: 1fr 1fr; } }
+    .project-img { width: 100%; height: 100%; object-fit: cover; min-height: 300px; }
+    .project-body { padding: 40px; }
+    
+    .testimonial { margin-top: 20px; padding-left: 20px; border-left: 4px solid var(--terracotta); font-style: italic; }
+    .btn { display: inline-block; padding: 12px 24px; background: var(--terracotta); color: white; text-decoration: none; border-radius: 8px; margin: 5px; font-weight: bold; }
+    
+    .fade { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+    .fade.show { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    
-    <section id="hero" class="fade">
-      <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chandrakant Shah" class="profile-photo">
-      <h1>Chandrakant Shah</h1>
-      <p class="tagline">Electrical & Electronics Engineering Student <br> Robotics & Power Electronics Enthusiast</p>
-    </section>
+<div class="container" id="main-content">
+  <section id="hero" class="fade">
+    <h1 id="user-name">Loading...</h1>
+    <p class="tagline" id="user-tagline"></p>
+  </section>
 
-    <section id="about" class="card fade">
-      <h2>My Story</h2>
-      <p>I am passionate about building real-world electronics systems, from reliable power supplies to complex automation and robotics projects. For me, engineering isn't just about reading schematics—it's about understanding the people who use the technology and crafting solutions that bring genuine warmth, ease, and efficiency to their everyday lives.</p>
-    </section>
-
-    <section id="skills" class="fade">
-      <h2>Technical Toolbox</h2>
-      <div class="skills-grid">
-        <span class="skill-tag">Analog Electronics</span>
-        <span class="skill-tag">Digital Electronics</span>
-        <span class="skill-tag">Power Electronics</span>
-        <span class="skill-tag">PCB Design</span>
-        <span class="skill-tag">Simulation (LTspice, Proteus)</span>
+  <section id="about" class="fade">
+    <div class="about-card">
+      <img id="user-photo" src="" alt="" class="about-image">
+      <div class="about-text">
+        <h2>My Story</h2>
+        <p id="user-about"></p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>Impactful Projects</h2>
+  <h2 class="fade">Technical Toolbox</h2>
+  <div id="skills-list" class="skills-grid fade"></div>
 
-      <div class="project-card fade">
-        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Candid interaction" class="project-image">
-        <div class="project-content">
-          <h3>LM317 Voltage Regulator</h3>
-          <p>An adjustable DC regulated power supply designed from the ground up for maximum reliability. Built to ensure that delicate lab equipment receives perfectly stable voltage under varying loads.</p>
-          <div class="testimonial">
-            "Chandrakant's power supply setup brought incredible peace of mind to our lab sessions. Knowing the voltage was rock-solid allowed us to focus completely on our experiments."
-            <span class="testimonial-author">— Lab Partner & Peer Engineer</span>
+  <h2 class="fade">Impactful Projects</h2>
+  <div id="projects-list"></div>
+
+  <section id="contact" style="text-align:center; padding: 100px 0;" class="fade">
+    <h2>Let's Connect</h2>
+    <div id="social-links"></div>
+  </section>
+</div>
+
+<script>
+fetch("portfolio.xml")
+  .then(res => res.text())
+  .then(data => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data, "text/xml");
+
+    // Personal Info
+    document.getElementById("user-name").textContent = xml.querySelector("name").textContent;
+    document.getElementById("user-tagline").innerHTML = `<strong>${xml.querySelector("role").textContent}</strong><br>${xml.querySelector("title").textContent}`;
+    document.getElementById("user-about").textContent = xml.querySelector("tagline").textContent;
+    document.getElementById("user-photo").src = xml.querySelector("photo").textContent;
+
+    // Skills
+    const skills = xml.querySelectorAll("skill");
+    let skillHTML = "";
+    skills.forEach(s => skillHTML += `<span class="skill-tag">${s.textContent}</span>`);
+    document.getElementById("skills-list").innerHTML = skillHTML;
+
+    // Projects
+    const projects = xml.querySelectorAll("project");
+    let projHTML = "";
+    projects.forEach(p => {
+      projHTML += `
+        <div class="project-card fade">
+          <img src="${p.querySelector("image").textContent}" class="project-img">
+          <div class="project-body">
+            <h3>${p.querySelector("name").textContent}</h3>
+            <p>${p.querySelector("desc").textContent}</p>
+            <div class="testimonial">
+              "${p.querySelector("testimonial").textContent}"
+              <br><strong>— ${p.querySelector("author").textContent}</strong>
+            </div>
           </div>
-        </div>
-      </div>
+        </div>`;
+    });
+    document.getElementById("projects-list").innerHTML = projHTML;
 
-      <div class="project-card fade">
-        <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Warm sun-drenched family" class="project-image">
-        <div class="project-content">
-          <h3>APS System</h3>
-          <p>An automatic mains-inverter switching system that guarantees zero downtime. I engineered this to seamlessly bridge power gaps, keeping homes and essential systems running smoothly when the grid drops.</p>
-          <div class="testimonial">
-            "The transition between mains and inverter is so smooth you don't even notice the power went out. It's a game-changer for keeping our daily lives uninterrupted."
-            <span class="testimonial-author">— Project Supervisor</span>
-          </div>
-        </div>
-      </div>
+    // Social
+    const social = xml.querySelector("social");
+    const platforms = ["GitHub", "LinkedIn", "Facebook", "Instagram", "Twitter"];
+    let socialHTML = `<a class="btn" href="mailto:${xml.querySelector("email").textContent}">Email Me</a>`;
+    platforms.forEach(p => {
+      socialHTML += `<a class="btn" href="${social.querySelector(p.toLowerCase()).textContent}" target="_blank">${p}</a>`;
+    });
+    document.getElementById("social-links").innerHTML = socialHTML;
 
-      <div class="project-card fade">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team collaboration" class="project-image">
-        <div class="project-content">
-          <h3>Digital Clock</h3>
-          <p>A functional digital clock built entirely using fundamental logic ICs. This project bridges the gap between raw digital theory and a tangible, real-world device that people interact with every day.</p>
-          <div class="testimonial">
-            "A brilliant demonstration of applying raw logic gates to create something incredibly practical. It's rare to see textbook theory transformed so elegantly into a working device."
-            <span class="testimonial-author">— Academic Mentor</span>
-          </div>
-        </div>
-      </div>
+    reveal(); // Trigger animation
+  });
 
-    </section>
-
-    <section id="contact" class="fade">
-      <h2>Let's Connect</h2>
-      <p>Whether you want to discuss a new project, collaborate on electronics, or just say hello, I'd love to hear from you.</p>
-      <div class="social-links">
-        <a class="btn" href="mailto:Chandrakants298@gmail.com">Email Me</a>
-        <a class="btn" href="https://github.com/chandrakantshah" target="_blank">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/chandra-kant-shah" target="_blank">LinkedIn</a>
-        <a class="btn" href="https://www.facebook.com/chandrakant.shah.001" target="_blank">Facebook</a>
-        <a class="btn" href="https://www.instagram.com/chandrakant.shah.001/" target="_blank">Instagram</a>
-        <a class="btn" href="https://x.com/Cshah001" target="_blank">X (Twitter)</a>
-      </div>
-    </section>
-
-  </div>
-
-  <script>
-    // Scroll animation for elements fading in
-    function reveal() {
-      var elements = document.querySelectorAll(".fade");
-      for (var i = 0; i < elements.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = elements[i].getBoundingClientRect().top;
-        var elementVisible = 100;
-
-        if (elementTop < windowHeight - elementVisible) {
-          elements[i].classList.add("show");
-        }
-      }
-    }
-
-    window.addEventListener("scroll", reveal);
-    window.addEventListener("load", reveal); // Trigger on load for elements already in view
-  </script>
+function reveal() {
+  const fades = document.querySelectorAll(".fade");
+  fades.forEach(f => {
+    if (f.getBoundingClientRect().top < window.innerHeight - 50) f.classList.add("show");
+  });
+}
+window.addEventListener("scroll", reveal);
+</script>
 </body>
 </html>
