@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont;
+      background: #0f172a;
+      color: white;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 100px;
+      border-radius: 50%;
+    }
+
+    h1 { margin: 10px 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      margin: 5px;
+      background: linear-gradient(135deg,#3b82f6,#9333ea);
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.8s;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div id="hero" class="card fade"></div>
+  <div id="about" class="card fade"></div>
+  <div id="skills" class="card fade"></div>
+  <div id="projects" class="card fade"></div>
+  <div id="contact" class="card fade"></div>
+
+</div>
+
+<script>
+fetch("portfolio.xml")
+.then(res => res.text())
+.then(data => {
+  const parser = new DOMParser();
+  const xml = parser.parseFromString(data, "text/xml");
+
+  // PERSONAL
+  const name = xml.querySelector("name").textContent;
+  const title = xml.querySelector("title").textContent;
+  const photo = xml.querySelector("photo").textContent;
+
+  document.getElementById("hero").innerHTML = `
+    <img src="${photo}">
+    <h1>${name}</h1>
+    <p>${title}</p>
+  `;
+
+  // ABOUT
+  document.getElementById("about").innerHTML = `
+    <h2>About</h2>
+    <p>${xml.querySelector("about").textContent}</p>
+  `;
+
+  // SKILLS
+  let skills = xml.querySelectorAll("skill");
+  let skillHTML = "<h2>Skills</h2><div class='grid'>";
+  skills.forEach(s => {
+    skillHTML += `<div class="card">${s.textContent}</div>`;
+  });
+  skillHTML += "</div>";
+  document.getElementById("skills").innerHTML = skillHTML;
+
+  // PROJECTS
+  let projects = xml.querySelectorAll("project");
+  let projHTML = "<h2>Projects</h2>";
+  projects.forEach(p => {
+    projHTML += `
+      <div class="card">
+        <h3>${p.querySelector("name").textContent}</h3>
+        <p>${p.querySelector("desc").textContent}</p>
+      </div>
+    `;
+  });
+  document.getElementById("projects").innerHTML = projHTML;
+
+  // SOCIAL
+  const social = xml.querySelector("social");
+  document.getElementById("contact").innerHTML = `
+    <h2>Contact</h2>
+    <a class="btn" href="${social.querySelector("github").textContent}">GitHub</a>
+    <a class="btn" href="${social.querySelector("linkedin").textContent}">LinkedIn</a>
+    <a class="btn" href="${social.querySelector("facebook").textContent}">Facebook</a>
+    <a class="btn" href="${social.querySelector("instagram").textContent}">Instagram</a>
+    <a class="btn" href="${social.querySelector("twitter").textContent}">X</a>
+  `;
+
+});
+
+// Scroll animation
+const reveal = () => {
+  document.querySelectorAll(".fade").forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+};
+window.addEventListener("scroll", reveal);
+window.addEventListener("load", reveal);
+</script>
+
+</body>
+</html>
