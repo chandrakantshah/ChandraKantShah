@@ -8,9 +8,8 @@
   <style>
     :root {
       --primary: #2d3436;
-      --accent: #d35400; /* Terracotta-inspired orange */
+      --accent: #d35400;
       --bg: #ffffff;
-      --text: #2d3436;
       --light-gray: #f9f9f9;
     }
 
@@ -18,41 +17,61 @@
       margin: 0;
       font-family: 'Inter', -apple-system, sans-serif;
       background-color: var(--bg);
-      color: var(--text);
+      color: var(--primary);
+      overflow-x: hidden;
     }
 
-    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+    /* Moving Background Canvas */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.4;
+    }
 
-    /* Header & Hero */
-    header { padding: 80px 0 40px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; position: relative; }
+
+    header { padding: 100px 0 60px; }
     .hero-flex { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-    .profile-img { width: 180px; height: 180px; border-radius: 20px; object-fit: cover; background: #eee; }
-    h1 { font-size: 2.5rem; margin: 0; }
-    .role-badge { color: var(--accent); font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+    .profile-img { width: 200px; height: 200px; border-radius: 20px; object-fit: cover; border: 1px solid #eee; background: white; }
 
-    /* Section Styles */
-    section { padding: 60px 0; border-bottom: 1px solid #eee; }
-    h2 { font-size: 1.8rem; margin-bottom: 30px; position: relative; }
-    h2::after { content: ''; display: block; width: 40px; height: 3px; background: var(--accent); margin-top: 8px; }
+    h1 { font-size: 3rem; margin: 0; letter-spacing: -1px; }
+    .role-badge { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-    /* Timeline/Grid Items */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-    .card { background: var(--light-gray); padding: 25px; border-radius: 12px; transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { margin-top: 0; color: var(--accent); }
-    .card-img { width: 100%; height: 200px; border-radius: 8px; object-fit: cover; margin-bottom: 15px; background: #ddd; }
+    section { padding: 80px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    h2 { font-size: 2rem; margin-bottom: 40px; }
 
-    .event-item { margin-bottom: 20px; padding-left: 15px; border-left: 2px solid #ddd; }
-    .highlight-box { background: #fff4ed; border-left: 4px solid var(--accent); padding: 20px; margin: 30px 0; }
+    /* Achievement Gallery */
+    .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; }
+    .gallery { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; scroll-snap-type: x mandatory; }
+    .gallery::-webkit-scrollbar { height: 6px; }
+    .gallery::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+    .gallery img { 
+      width: 280px; height: 180px; object-fit: cover; border-radius: 8px; 
+      scroll-snap-align: start; flex-shrink: 0; background: #f0f0f0;
+    }
 
-    .btn { display: inline-block; padding: 12px 25px; border: 2px solid var(--text); text-decoration: none; color: var(--text); font-weight: bold; border-radius: 6px; transition: 0.3s; }
-    .btn:hover { background: var(--text); color: #fff; }
+    .highlight-box { 
+      background: white; border: 1px solid #eee; border-left: 5px solid var(--accent); 
+      padding: 30px; border-radius: 0 12px 12px 0; margin: 40px 0; 
+    }
 
-    .participation-list { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; padding: 0; }
-    .participation-list li { background: #eee; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; }
+    .social-footer { display: flex; justify-content: center; gap: 25px; padding: 40px 0; font-size: 1.5rem; }
+    .social-footer a { color: var(--primary); transition: color 0.3s; }
+    .social-footer a:hover { color: var(--accent); }
+
+    .btn { 
+      display: inline-block; padding: 12px 30px; border: 2px solid var(--primary); 
+      color: var(--primary); text-decoration: none; font-weight: bold; border-radius: 8px; 
+    }
   </style>
 </head>
 <body>
+
+<canvas id="bg-canvas"></canvas>
 
 <div class="container">
   <header>
@@ -60,81 +79,121 @@
       <img id="p-photo" src="your-photo.jpeg" alt="Profile" class="profile-img">
       <div>
         <div class="role-badge" id="p-role">Loading...</div>
-        <h1 id="p-name">Chandrakant Shah</h1>
-        <p id="p-tagline" style="font-size: 1.2rem; opacity: 0.8; max-width: 600px;"></p>
-        <div style="margin-top: 20px;">
-          <a id="p-email" href="" class="btn">Get in Touch</a>
-        </div>
+        <h1 id="p-name">Loading...</h1>
+        <p id="p-tagline" style="font-size: 1.2rem; opacity: 0.8;"></p>
+        <a id="p-email" href="" class="btn" style="margin-top:20px">Contact Me</a>
       </div>
     </div>
   </header>
 
   <section id="leadership">
-    <h2>Leadership</h2>
+    <h2>Leadership & Organizing</h2>
     <div class="highlight-box">
-      <h3>Organized RADAR '26</h3>
-      <p>As the <strong>Vice President of Robo Yuwa</strong>, I spearheaded the organization of RADAR '26, our flagship annual event. I led the technical committee to design challenges that tested the limits of engineering and robotics innovation.</p>
+      <h3>Organized RADAR26</h3>
+      <p id="radar-desc"></p>
+      <small style="color: var(--accent); font-weight: bold;">24hrs Hardware Hackathon</small>
     </div>
   </section>
 
   <section id="wins">
-    <h2>Hackathons & Competitions</h2>
-    <div id="wins-grid" class="grid">
-      </div>
+    <h2>Competition Wins</h2>
+    <div id="wins-container"></div>
   </section>
 
-  <section id="activity">
-    <h2>Experience & Engagement</h2>
-    <div id="experience-log">
-      </div>
-    <h3 style="margin-top:40px">Other Participations</h3>
-    <ul id="p-list" class="participation-list"></ul>
+  <section id="participation">
+    <h2>Academic & Event Participation</h2>
+    <div id="p-list" style="display:flex; flex-wrap:wrap; gap:10px;"></div>
   </section>
 
-  <footer style="padding: 60px 0; text-align: center; border-top: 1px solid #eee;">
-    <div id="socials"></div>
-    <p style="margin-top: 20px; opacity: 0.5;">&copy; 2026 Chandrakant Shah</p>
-  </footer>
+  <footer class="social-footer" id="socials"></footer>
 </div>
 
 <script>
+// --- MOVING BACKGROUND LOGIC ---
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function initBG() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  particles = [];
+  for(let i = 0; i < 50; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2
+    });
+  }
+}
+
+function drawBG() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#d35400';
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+    p.x += p.vx; p.y += p.vy;
+    if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+  });
+  requestAnimationFrame(drawBG);
+}
+window.addEventListener('resize', initBG);
+initBG(); drawBG();
+
+// --- XML DATA LOADING ---
 fetch("portfolio.xml")
   .then(res => res.text())
   .then(data => {
     const parser = new DOMParser();
     const xml = parser.parseFromString(data, "text/xml");
 
-    // Profile Info
+    // Profile
     document.getElementById("p-name").textContent = xml.querySelector("name").textContent;
     document.getElementById("p-role").textContent = xml.querySelector("role").textContent;
     document.getElementById("p-tagline").textContent = xml.querySelector("tagline").textContent;
-    document.getElementById("p-email").href = "mailto:" + xml.querySelector("email").textContent;
-
-    // Competition Wins
+    document.getElementById("radar-desc").textContent = xml.querySelector("event desc").textContent;
+    
+    // Competition Wins with Multi-Image Support
     let winsHTML = "";
     xml.querySelectorAll("win").forEach(win => {
+      const images = Array.from(win.querySelectorAll("image")).map(img => `<img src="${img.textContent}" alt="Event Photo">`).join("");
       winsHTML += `
         <div class="card">
-          <img src="${win.querySelector("image").textContent}" class="card-img" alt="${win.querySelector("title").textContent}">
           <h3>${win.querySelector("title").textContent}</h3>
-          <p>Organized by ${win.querySelector("organizer").textContent}</p>
+          <p style="color: #666; margin-bottom: 15px;">Organized by ${win.querySelector("organizer").textContent}</p>
+          <div class="gallery">${images}</div>
         </div>`;
     });
-    document.getElementById("wins-grid").innerHTML = winsHTML;
+    document.getElementById("wins-container").innerHTML = winsHTML;
 
-    // Participations
-    let pHTML = "";
+    // Participation Tags
+    let pTags = "";
     xml.querySelectorAll("item").forEach(item => {
-      pHTML += `<li>${item.textContent}</li>`;
+      pTags += `<span style="background:#f0f0f0; padding:8px 15px; border-radius:5px; font-size:0.9rem;">${item.textContent}</span>`;
     });
-    document.getElementById("p-list").innerHTML = pHTML;
+    document.getElementById("p-list").innerHTML = pTags;
 
-    // Socials
+    // RESTORED ALL SOCIAL LINKS
     const social = xml.querySelector("social");
-    document.getElementById("socials").innerHTML = `
-      <a href="${social.querySelector('linkedin').textContent}" style="margin: 0 15px; font-size: 1.5rem; color: var(--text);"><i class="fab fa-linkedin"></i></a>
-      <a href="${social.querySelector('github').textContent}" style="margin: 0 15px; font-size: 1.5rem; color: var(--text);"><i class="fab fa-github"></i></a>
-    `;
+    const links = [
+      { id: 'linkedin', icon: 'fa-linkedin' },
+      { id: 'github', icon: 'fa-github' },
+      { id: 'facebook', icon: 'fa-facebook' },
+      { id: 'instagram', icon: 'fa-instagram' },
+      { id: 'twitter', icon: 'fa-x-twitter' }
+    ];
+    
+    let socialHTML = "";
+    links.forEach(link => {
+      const url = social.querySelector(link.id).textContent;
+      socialHTML += `<a href="${url}" target="_blank"><i class="fa-brands ${link.icon}"></i></a>`;
+    });
+    document.getElementById("socials").innerHTML = socialHTML;
   });
 </script>
 </body>
