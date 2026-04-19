@@ -3,139 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chandra kant Shah</title>
+  <title>Chandrakant Shah</title>
+
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #2d3436;
-      --accent: #d35400; /* Terracotta-inspired orange */
-      --bg: #ffffff;
-      --text: #2d3436;
-      --light-gray: #f9f9f9;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-    }
-
-    .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-
-    /* Header & Hero */
-    header { padding: 80px 0 40px; }
-    .hero-flex { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-    .profile-img { width: 180px; height: 180px; border-radius: 20px; object-fit: cover; background: #eee; }
-    h1 { font-size: 2.5rem; margin: 0; }
-    .role-badge { color: var(--accent); font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-
-    /* Section Styles */
-    section { padding: 60px 0; border-bottom: 1px solid #eee; }
-    h2 { font-size: 1.8rem; margin-bottom: 30px; position: relative; }
-    h2::after { content: ''; display: block; width: 40px; height: 3px; background: var(--accent); margin-top: 8px; }
-
-    /* Timeline/Grid Items */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-    .card { background: var(--light-gray); padding: 25px; border-radius: 12px; transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { margin-top: 0; color: var(--accent); }
-    .card-img { width: 100%; height: 200px; border-radius: 8px; object-fit: cover; margin-bottom: 15px; background: #ddd; }
-
-    .event-item { margin-bottom: 20px; padding-left: 15px; border-left: 2px solid #ddd; }
-    .highlight-box { background: #fff4ed; border-left: 4px solid var(--accent); padding: 20px; margin: 30px 0; }
-
-    .btn { display: inline-block; padding: 12px 25px; border: 2px solid var(--text); text-decoration: none; color: var(--text); font-weight: bold; border-radius: 6px; transition: 0.3s; }
-    .btn:hover { background: var(--text); color: #fff; }
-
-    .participation-list { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; padding: 0; }
-    .participation-list li { background: #eee; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; }
-  </style>
 </head>
+
 <body>
 
 <div class="container">
+
+  <!-- HERO -->
   <header>
-    <div class="hero-flex">
-      <img id="p-photo" src="your-photo.jpeg" alt="Profile" class="profile-img">
+    <div class="logo">
+  <img src="me.jpeg" alt="logo">
+</div>
+    <div class="hero">
+      <img id="photo" src="me.jpeg" class="profile-img" alt="Profile Photo">
       <div>
-        <div class="role-badge" id="p-role">Loading...</div>
-        <h1 id="p-name">Chandrakant Shah</h1>
-        <p id="p-tagline" style="font-size: 1.2rem; opacity: 0.8; max-width: 600px;"></p>
-        <div style="margin-top: 20px;">
-          <a id="p-email" href="" class="btn">Get in Touch</a>
-        </div>
+        <h1 id="name">Loading...</h1>
+        <h3 id="role"></h3>
+        <p id="tagline"></p>
+        <a id="email" class="btn">Contact Me</a>
       </div>
     </div>
   </header>
 
-  <section id="leadership">
-    <h2>Leadership</h2>
-    <div class="highlight-box">
-      <h3>Organized RADAR '26</h3>
-      <p>As the <strong>Vice President of Robo Yuwa</strong>, I spearheaded the organization of RADAR '26, our flagship annual event. I led the technical committee to design challenges that tested the limits of engineering and robotics innovation.</p>
-    </div>
+  <!-- PROJECTS -->
+  <section>
+    <h2>Projects & Achievements</h2>
+    <div id="projects" class="grid"></div>
   </section>
 
-  <section id="wins">
-    <h2>Hackathons & Competitions</h2>
-    <div id="wins-grid" class="grid">
-      </div>
+  <!-- EXPERIENCE -->
+  <section>
+    <h2>Experience</h2>
+    <div id="experience"></div>
   </section>
 
-  <section id="activity">
-    <h2>Experience & Engagement</h2>
-    <div id="experience-log">
-      </div>
-    <h3 style="margin-top:40px">Other Participations</h3>
-    <ul id="p-list" class="participation-list"></ul>
-  </section>
-
-  <footer style="padding: 60px 0; text-align: center; border-top: 1px solid #eee;">
+  <!-- SOCIAL -->
+  <footer>
     <div id="socials"></div>
-    <p style="margin-top: 20px; opacity: 0.5;">&copy; 2026 Chandrakant Shah</p>
+    <p>© 2026 Chandrakant Shah</p>
   </footer>
+
 </div>
 
-<script>
-fetch("portfolio.xml")
-  .then(res => res.text())
-  .then(data => {
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data, "text/xml");
-
-    // Profile Info
-    document.getElementById("p-name").textContent = xml.querySelector("name").textContent;
-    document.getElementById("p-role").textContent = xml.querySelector("role").textContent;
-    document.getElementById("p-tagline").textContent = xml.querySelector("tagline").textContent;
-    document.getElementById("p-email").href = "mailto:" + xml.querySelector("email").textContent;
-
-    // Competition Wins
-    let winsHTML = "";
-    xml.querySelectorAll("win").forEach(win => {
-      winsHTML += `
-        <div class="card">
-          <img src="${win.querySelector("image").textContent}" class="card-img" alt="${win.querySelector("title").textContent}">
-          <h3>${win.querySelector("title").textContent}</h3>
-          <p>Organized by ${win.querySelector("organizer").textContent}</p>
-        </div>`;
-    });
-    document.getElementById("wins-grid").innerHTML = winsHTML;
-
-    // Participations
-    let pHTML = "";
-    xml.querySelectorAll("item").forEach(item => {
-      pHTML += `<li>${item.textContent}</li>`;
-    });
-    document.getElementById("p-list").innerHTML = pHTML;
-
-    // Socials
-    const social = xml.querySelector("social");
-    document.getElementById("socials").innerHTML = `
-      <a href="${social.querySelector('linkedin').textContent}" style="margin: 0 15px; font-size: 1.5rem; color: var(--text);"><i class="fab fa-linkedin"></i></a>
-      <a href="${social.querySelector('github').textContent}" style="margin: 0 15px; font-size: 1.5rem; color: var(--text);"><i class="fab fa-github"></i></a>
-    `;
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>

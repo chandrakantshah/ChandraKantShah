@@ -1,0 +1,31 @@
+{
+  "name": "Chandrakant Shah",
+  "role": "Vice President, Robo Yuwa",
+  "tagline": "Electrical & Electronics Engineering Student passionate about robotics and power electronics.",
+  "email": "your@email.com",
+
+  "projects": [
+    {
+      "title": "3lbs Robo War Runner Up",
+      "organizer": "Aavishakar",
+      "image": "robowar.jpeg"
+    },
+    {
+      "title": "IT Meet 2025",
+      "organizer": "KU Robotics Club",
+      "image": "it-meet.jpeg"
+    }
+  ],
+
+  "experience": [
+    {
+      "name": "RADAR 2026",
+      "desc": "Organized 24-hour hardware hackathon, managed logistics and technical tracks."
+    }
+  ],
+
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourprofile"
+  }
+}
