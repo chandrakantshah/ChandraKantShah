@@ -4,14 +4,14 @@
   "tagline": "Electrical & Electronics Engineering Student passionate about robotics and power electronics.",
   "email": "your@email.com",
 
-  "projects": [
+  "achievements": [
     {
       "title": "3lbs Robo War Runner Up",
       "organizer": "Aavishakar",
       "image": "robowar.jpeg"
     },
     {
-      "title": "IT Meet 2025",
+      "title": "2nd Runner Up - IT Meet 2025",
       "organizer": "KU Robotics Club",
       "image": "it-meet.jpeg"
     }
@@ -20,12 +20,15 @@
   "experience": [
     {
       "name": "RADAR 2026",
-      "desc": "Organized 24-hour hardware hackathon, managed logistics and technical tracks."
+      "desc": "Organized 24-hour hardware hackathon and managed technical execution."
     }
   ],
 
   "social": {
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://linkedin.com/in/yourprofile"
+    "github": "https://github.com/chandrakantshah",
+    "linkedin": "https://linkedin.com/in/chandra-kant-shah",
+    "instagram": "https://www.instagram.com/chandrakant.shah.001/",
+    "facebook": "https://www.facebook.com/chandrakant.shah.001",
+    "x": "https://x.com/Cshah001"
   }
 }

@@ -1,8 +1,25 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0f172a;
   color: white;
+  overflow-x: hidden;
+
+  .card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+  /* dynamic gradient background */
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #0ea5e9, #1e3a8a);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .container {
@@ -96,4 +113,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.socials a {
+  margin: 0 12px;
+  font-size: 24px;
+  color: white;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #38bdf8;
+  transform: scale(1.2);
 }

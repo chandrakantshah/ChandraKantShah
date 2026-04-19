@@ -10,12 +10,12 @@ fetch("data.json")
 
     // PROJECTS
     let projectHTML = "";
-    data.projects.forEach(p => {
+    data.achievements.forEach(a => {
       projectHTML += `
         <div class="card">
-          <img src="${p.image}" alt="project image" onerror="this.src='me.jpeg'">
-          <h3>${p.title}</h3>
-          <p>${p.organizer}</p>
+          <img src="${a.image}" alt="">
+          <h3>${a.title}</h3>
+          <p>${a.organizer}</p>
         </div>
       `;
     });
@@ -35,9 +35,16 @@ fetch("data.json")
 
     // SOCIAL
     document.getElementById("socials").innerHTML = `
-      <a href="${data.social.github}" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="${data.social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>
-    `;
+  <a href="${data.social.github}" target="_blank"><i class="fab fa-github"></i></a>
+
+  <a href="${data.social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>
+
+  <a href="${data.social.instagram}" target="_blank"><i class="fab fa-instagram"></i></a>
+
+  <a href="${data.social.facebook}" target="_blank"><i class="fab fa-facebook"></i></a>
+
+  <a href="${data.social.x}" target="_blank"><i class="fab fa-x-twitter"></i></a>
+`;
   })
   .catch(err => {
     console.error("Error loading JSON:", err);
